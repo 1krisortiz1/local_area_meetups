@@ -1,7 +1,7 @@
+require 'open-uri'
+require 'nokogiri'
+require 'pry'
+
 require_relative  "./local_area_meetups/version"
-
-module LocalAreaMeetups
-  # Your code goes here...
-end
-
-require_relative './local_area_meetups/cli'
+require_relative  './local_area_meetups/meetups'
+require_relative  './local_area_meetups/cli'
