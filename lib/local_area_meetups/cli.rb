@@ -9,15 +9,16 @@ class LocalAreaMeetups::CLI
 
   def list_meetups
     puts "Local Area Meetups"
-    puts <<-DOC.gsub /^\s*/, ''
-      1. phoenix ladie code
-      2. Java coding club
-    DOC
+    @meetups = LocalAreaMeetups::Meetups.info
+    @meetups.each.with_index(1) do |meetup, i|
+      puts "#{i}. #{meetup.group_name} - #{meeups.date_time} - #{meetup.location}"
+    end
   end
 
   def menu
-    puts "Enter the number of the meetup you'd like more info on or type exit to enter: "
+    input = nil
     while input != "exit"
+    puts "Enter the number of the meetup you'd like more info on or type exit to enter: "
       input = gets.strip.downcase
       case input
       when "1"
