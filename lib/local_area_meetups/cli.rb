@@ -23,7 +23,7 @@ class LocalAreaMeetups::CLI
 
       if input.to_i > 0 # if it converts to an integer and is greater than zero
           the_meetup = @meetups[input.to_i-1]
-          puts "#{meetups.group_name} - #{meetups.date_time} - #{meetups.location}" # -1 want array index to this deal
+          puts "#{meetups.group_name}" #{}" - #{meetups.date_time} - #{meetups.location}" # -1 want array index to this deal
         elsif input == "list"
           list_meetups
         else
