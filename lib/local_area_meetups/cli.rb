@@ -9,9 +9,9 @@ class LocalAreaMeetups::CLI
 
   def list_meetups
     puts "Local Area Meetups"
-    @meetups = LocalAreaMeetups::Meetups.info # should return meetups
+    @meetups = LocalAreaMeetups::Meetups.all # should return meetups
     @meetups.each.with_index(1) do |meetups, i|
-      puts "#{i}. #{meetups.group_name} - #{meetups.date_time} - #{meetups.location}"
+      puts "#{i}. #{meetups.group_name}"#{}" - #{meetups.date_time} - #{meetups.location}"
     end
   end
 
