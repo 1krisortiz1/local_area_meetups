@@ -1,14 +1,19 @@
-# CLI Controller
 class LocalAreaMeetups::CLI
 
   def call
+    puts "Welcome to Meetup!"
+    puts "Please select from the category list below:"
+    list_categories
     list_meetups
-    menu
     goodbye
   end
 
+  def list_categories
+
+  end
+
   def list_meetups
-    puts "Local Area Meetups"
+
     @meetups = LocalAreaMeetups::Meetups.all # should return meetups
     @meetups.each.with_index(1) do |meetups, i|
       puts "#{i}. #{meetups.group_name}"#{}" - #{meetups.date_time} - #{meetups.location}"

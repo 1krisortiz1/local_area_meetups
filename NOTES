@@ -9,23 +9,34 @@ How to build a CLI Gem
 	7. Discover objects
 	8. Program
 
-	- A command line interface for Phoenix area meet ups with meetup.com
-	User types in zip code
+	- A command line interface for local area meetups with meetup.com
 
-	Show a list of meet ups
+	- "Welcome to Meetup! Please select from the category list below:"
+		-ask user to select a meetup category
+		- List categories 1 - 24
+		- user selects category "Select 1 - 24"
+		- ask user to select the desired meetup for meet up information
+		- "Select Meetup number:"
+		- 1. meetup_1
+			- What is a meetup?
+				- A Meetup has a group name
+				- A meetup has a URL
+				- A meetup has a date and time
+				- A meetup has an location
+		- 2. meetup_2
+		- 3. meetup_3
+		- 4. meetup_4
+		- 5. meetup_5
+		etc.
+		-ask user if they would like to return to the meetup list or select another category or exit.
+			- "What would you like to do? R - Return to meetup list, C - Return to category list, E - Exit"
+			-if return to meetup list
+				-returns to meetup list
+			-if select another category
+				-returns to category list
+			-if exit
+				-exit - Goodbye, see you next time!
 
-	1. Meet up 1
-	2. Meet up 2
-
-Which meet up are you interested in?
 
 (google how to build a gem?) Make a gem using bundler. Railscasts.com - example.
 Enter bundle gem XXXXX (into terminal)
-Take notes file and save it into the directory (notes.md)
-
-What is a deal?
-
-A Meetup has a group name
-A meetup has a date and time
-A meetup has a URL
-A meetup has an location
