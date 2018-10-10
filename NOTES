@@ -11,7 +11,8 @@ How to build a CLI Gem
 
 	- A command line interface for local area meetups with meetup.com
 
-	- "Welcome to Meetup! Please select from the category list below:"
+	- "Hi! Welcome to Meetup!"
+	- "Please select from the category list below:"
 		-ask user to select a meetup category
 		- List categories 1 - 24
 		- user selects category "Select 1 - 24"
