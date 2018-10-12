@@ -3,12 +3,24 @@ class LocalAreaMeetups::CLI
   def call
     list_categories
     menu
+    list_meetups
     goodbye
   end
 
   def list_categories
     puts "Local Meetup Categories:"
-    @meetup = LocalAreaMeetups::Category.categories
+    @category = LocalAreaMeetups::Category.categories
+    @category.each.with_index(1) do |category, i|
+      puts "#{i}. #{category.name}"
+    end
+  end
+
+  def list_meetups
+      puts "Here are meetups in the area:"
+      @meetup = LocalAreaMeetups::Meetup.category_meetups
+      @meetup.each.with_index(1) do |meetup, i|
+        puts "#{i}. #{meetup.name} - #{meetup.group_name} - #{meetup.meetup_location}, #{meetup.meetup_date_and_time}, #{meetup.url}"
+      end
   end
 
   def menu
@@ -16,19 +28,12 @@ class LocalAreaMeetups::CLI
       while input != "exit"
           puts "Choose from the category list (1 - 24) or list to view the categories again or type exit to exit:"
           input = gets.strip.downcase
-          case input
-          when "1"
-            puts "Here are meetups in the Outdoors & Adventure category"
-            puts "List of meetups will show here"
-          when "2"
-            puts "Here are meetups in the Tech category"
-          when "3"
-            puts "Here are meetups in the Family category"
-            puts "List of meetups will show here"
-          when "4"
-            puts "Here are meetups in the Health & Wellness category"
-            puts "List of meetups will show here"
-          when "list"
+          if input.to_i > 0
+            the_category = @category[input.to_i-1]
+            puts "#{the_category.name}"
+            #the_meetup = @meetup[input.to_i-1]
+            #puts "#{the_meetup.name} - #{the_meetup.group_name} - #{the_meetup.meetup_location}, #{the_meetup.meetup_date_and_time}, #{the_meetup.url}"
+          elsif input == "list"
             list_categories
           else
             puts "Please enter a valid response!"

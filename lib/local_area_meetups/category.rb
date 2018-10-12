@@ -2,13 +2,6 @@ class LocalAreaMeetups::Category
   attr_accessor :name
 
   def self.categories
-    puts <<~DOC
-      1. Outdoors & Adventure
-      2. Tech
-      3. Family
-      4. Health & Wellness
-    DOC
-
     category_1 = self.new
     category_1.name = "Outdoors & Adventure"
 
