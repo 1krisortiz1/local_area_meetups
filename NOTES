@@ -16,18 +16,21 @@ How to build a CLI Gem
 		-ask user to select a meetup category
 		- List categories 1 - 24
 		- user selects category "Select 1 - 24"
-		- ask user to select the desired meetup for meet up information
-		- "Select Meetup number:"
-		- 1. meetup_1
-			- What is a meetup?
-				- A Meetup has a group name
-				- A meetup has a URL
-				- A meetup has a date and time
-				- A meetup has an location
-		- 2. meetup_2
-		- 3. meetup_3
-		- 4. meetup_4
-		- 5. meetup_5
+			- Cat 1
+			- Cat 2
+			- Cat 3
+				- ask user to select the desired meetup for meet up information
+				- "Select Meetup number:"
+					- 1. meetup_1
+						- What is a meetup?
+						- A Meetup has a group name
+						- A meetup has a URL
+						- A meetup has a date and time
+						- A meetup has an location
+					- 2. meetup_2
+					- 3. meetup_3
+					- 4. meetup_4
+					- 5. meetup_5
 		etc.
 		-ask user if they would like to return to the meetup list or select another category or exit.
 			- "What would you like to do? R - Return to meetup list, C - Return to category list, E - Exit"

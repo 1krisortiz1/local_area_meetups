@@ -8,12 +8,7 @@ class LocalAreaMeetups::CLI
 
   def list_categories
     puts "Local Meetup Categories:"
-    puts <<~DOC
-      1. Outdoors & Adventure
-      2. Tech
-      3. Family
-      4. Health & Wellness
-    DOC
+    @meetup = LocalAreaMeetups::Category.categories
   end
 
   def menu
