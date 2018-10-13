@@ -42,9 +42,9 @@ class LocalAreaMeetups::Category
     category
   end
 
-  def scrape_outdoor_and_adventures
+  def self.scrape_outdoor_and_adventures
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure"))
-
+    binding.pry
   end
 
   def self.scrape_tech
@@ -159,6 +159,7 @@ class LocalAreaMeetups::Category
 
   def self.scrape_career_and_business
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/career-business"))
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
 
   end
 end
