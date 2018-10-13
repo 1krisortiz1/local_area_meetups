@@ -98,76 +98,91 @@ class LocalAreaMeetups::Category
 
   def self.scrape_language_and_culture
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/language"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/language"
   end
 
   def self.scrape_music
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/music"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/music"
   end
 
   def self.scrape_movements
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/movements"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/movements"
   end
 
   def self.scrape_lgbtq
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/lgbtq"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/lgbtq"
   end
 
   def self.scrape_film
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/film"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/film"
   end
 
   def self.scrape_scifi_and_games
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/games-sci-fi"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/games-sci-fi"
   end
 
   def self.scrape_beliefs
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/beliefs"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/beliefs"
   end
 
   def self.scrape_arts
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/arts-culture"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/arts-culture"
   end
 
   def self.scrape_book_clubs
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/book-clubs"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/book-clubs"
   end
 
   def self.scrape_dance
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/dancing"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/dancing"
   end
 
   def self.scrape_pets
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/pets"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/pets"
   end
 
   def self.scrape_hobbies_and_crafts
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/hobbies-crafts"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/hobbies-crafts"
   end
 
   def self.scrape_fashion_and_beauty
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/fashion-beauty"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/fashion-beauty"
   end
 
   def self.scrape_social
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/social"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/social"
   end
 
   def self.scrape_career_and_business
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/career-business"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/career-business"
   end
 end
