@@ -19,7 +19,7 @@ class LocalAreaMeetups::CLI
       puts "Choose from the category list (1 - 24) or list to view the categories again or type exit to exit:"
       input = gets.strip.downcase
 
-      if input.to_i > 0 && input.to_i < 3
+      if input.to_i > 0 && input.to_i < 25
         the_category = @category[input.to_i-1]
         puts "Click the link for meetups in your area!"
         puts "#{the_category.name} - #{the_category.url}"

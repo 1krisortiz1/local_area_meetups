@@ -2,8 +2,6 @@ class LocalAreaMeetups::Category
   attr_accessor :name, :url
 
   def self.categories
-    #doc = Nokogiri::HTML(open("https://www.meetup.com"))
-    #category_name = doc.search("li.gridList-item").text
     self.scrape_category
   end
 
@@ -44,145 +42,217 @@ class LocalAreaMeetups::Category
 
   def self.scrape_outdoor_and_adventures
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/outdoors-adventure"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/outdoors-adventure"
+    category
   end
 
   def self.scrape_tech
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/tech"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/tech"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/tech"
+    category
   end
 
   def self.scrape_family
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/parents-family"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/parents-family"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/parents-family"
+    category
   end
 
   def self.scrape_health_and_wellness
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/health-wellness/"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/health-wellness"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/health-wellness"
+    category
   end
 
   def self.scrape_learning
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/education"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/education"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/education"
+    category
   end
 
   def self.scrape_sports_and_fitness
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/sports-fitness"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/sports-fitness"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/sports-fitness"
+    category
   end
 
   def self.scrape_photograpy
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/photography"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/photography"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/photography"
+    category
   end
 
   def self.scrape_food_and_drinks
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/food"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/food"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/food"
+    category
   end
 
   def self.scrape_writing
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/writing"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/writing"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/writing"
+    category
   end
 
   def self.scrape_language_and_culture
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/language"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/language"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/language"
+    category
   end
 
   def self.scrape_music
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/music"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/music"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/music"
+    category
   end
 
   def self.scrape_movements
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/movements"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/movements"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/movements"
+    category
   end
 
   def self.scrape_lgbtq
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/lgbtq"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/lgbtq"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/lgbtq"
+    category
   end
 
   def self.scrape_film
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/film"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/film"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/film"
+    category
   end
 
   def self.scrape_scifi_and_games
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/games-sci-fi"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/games-sci-fi"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/games-sci-fi"
+    category
   end
 
   def self.scrape_beliefs
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/beliefs"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/beliefs"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/beliefs"
+    category
   end
 
   def self.scrape_arts
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/arts-culture"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/arts-culture"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/arts-culture"
+    category
   end
 
   def self.scrape_book_clubs
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/book-clubs"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/book-clubs"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/book-clubs"
+    category
   end
 
   def self.scrape_dance
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/dancing"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/dancing"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/dancing"
+    category
   end
 
   def self.scrape_pets
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/pets"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/pets"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/pets"
+    category
   end
 
   def self.scrape_hobbies_and_crafts
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/hobbies-crafts"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/hobbies-crafts"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/hobbies-crafts"
+    category
   end
 
   def self.scrape_fashion_and_beauty
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/fashion-beauty"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/fashion-beauty"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/fashion-beauty"
+    category
   end
 
   def self.scrape_social
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/social"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/social"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/social"
+    category
   end
 
   def self.scrape_career_and_business
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/career-business"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
-    url = "https://www.meetup.com/find/career-business"
+
+    category = self.new
+    category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
+    category.url = "https://www.meetup.com/find/career-business"
+    category
   end
 end
