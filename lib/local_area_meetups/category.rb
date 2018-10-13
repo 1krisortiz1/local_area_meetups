@@ -44,47 +44,56 @@ class LocalAreaMeetups::Category
 
   def self.scrape_outdoor_and_adventures
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure"))
-    binding.pry
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/outdoors-adventure"
   end
 
   def self.scrape_tech
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/tech"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/tech"
   end
 
   def self.scrape_family
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/parents-family"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/parents-family"
   end
 
   def self.scrape_health_and_wellness
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/health-wellness/"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/health-wellness"
   end
 
   def self.scrape_learning
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/education"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/education"
   end
 
   def self.scrape_sports_and_fitness
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/sports-fitness"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/sports-fitness"
   end
 
   def self.scrape_photograpy
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/photography"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/photography"
   end
 
   def self.scrape_food_and_drinks
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/food"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/food"
   end
 
   def self.scrape_writing
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/writing"))
-
+    title = doc.search("h1.text--display1").text.gsub("\n"," ")
+    url = "https://www.meetup.com/find/writing"
   end
 
   def self.scrape_language_and_culture
@@ -159,7 +168,6 @@ class LocalAreaMeetups::Category
 
   def self.scrape_career_and_business
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/career-business"))
-    title = doc.search("h1.text--display1").text.gsub("\n"," ")
 
   end
 end
