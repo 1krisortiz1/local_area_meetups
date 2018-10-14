@@ -17,9 +17,9 @@ class LocalAreaMeetups::CLI
   def list_meetups
     puts "Here is a list of meetups:"
     puts "Loading..................."
-    @meetup = LocalAreaMeetups::Meetup.category_meetups
-    @meetup.each.with_index(1) do |meetup, i|
-      puts "#{i}. #{meetup.group_name} - #{meetup.group_location} - #{meetup.member_count} - #{meetup.group_status}"
+    @meetup_meetups = LocalAreaMeetups::Meetup.category_meetups
+    @meetup_meetups.each.with_index(1) do |meetup, i|
+      puts "#{i}. #{meetup_meetups.group_name} - #{meetup_meetups.group_url}"
     end
       puts "Enjoy!!"
   end
@@ -31,7 +31,7 @@ class LocalAreaMeetups::CLI
       input = gets.strip.downcase
 
       if input == "1"
-        list_meetups #Outdoors & Adventure Meetups
+        @meetup_meetups[0] #Outdoors & Adventure Meetups
       elsif input == "2"
         list_meetups #Tech Meetups
       elsif input == "3"
