@@ -38,11 +38,11 @@ class LocalAreaMeetups::Category
 
   def self.scrape_outdoor_and_adventures
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure"))
-    binding.pry
+
     category = self.new
     category.name = doc.search("h1.text--display1").text.gsub("\n"," ")
     category.url = "https://www.meetup.com/find/outdoors-adventure"
-    category.info = doc.search("h3.inline-block").text.strip.gsub("\n", ",").gsub("\t", "")
+    #category.info = doc.search("h3.inline-block").text.strip.gsub("\n", ",").gsub("\t", "")
     category
   end
 
