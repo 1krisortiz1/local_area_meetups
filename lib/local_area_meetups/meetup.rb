@@ -1,5 +1,5 @@
 class LocalAreaMeetups::Meetup
-  attr_accessor :name, :group_name, :meetup_location, :meetup_date_and_time, :url, :going_count
+  attr_accessor :group_name, :group_location, :url, :member_count, :group_status
 
   def self.category_meetups
     self.scrape_meetups
@@ -19,29 +19,108 @@ class LocalAreaMeetups::Meetup
 
     meetup
   end
-  #  meetup_1 = self.new
-  #  meetup_1.name = "Amazing Must See Canyon Autumn Colors - Payson"
-  #  meetup_1.group_name = "Hiking Hikers Hiking Group"
-  #  meetup_1.meetup_location = "Target Fountain Hills"
-  #  meetup_1.meetup_date_and_time = "Oct 13 - 6 AM to 2 pm"
-  #  meetup_1.url = "https://www.meetup.com/threeh/events/253952528/"
 
   def self.scrape_hiking_hikers_hiking_group
-    doc = Nokogiri::HTML(open("https://www.meetup.com/threeh"))
-    binding.pry
+    doc = Nokogiri::HTML(open("https://www.meetup.com/threeh/events"))
+
     meetup = self.new
-    meetup.name =
-    meetup.group_name =
-    meetup.location =
-    meetup.date_and_time =
-    meetup.going_count =
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
     meetup.url = "https://www.meetup.com/find/outdoors-adventure"
-    meetup.group_description =
+    meetup.group_status = doc.search("span.infoToggle-label").text
 
     meetup
   end
 
+  def self.scrape_global_bikes_meetup
+    doc = Nokogiri::HTML(open("https://www.meetup.com/Global-Bikes-Meetup/events"))
 
-#  end
+    meetup = self.new
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
+    meetup.url = "https://www.meetup.com/find/outdoors-adventure"
+    meetup.group_status = doc.search("span.infoToggle-label").text
 
-#end
+    meetup
+  end
+
+  def self.scrape_trail_mix_hiking
+    doc = Nokogiri::HTML(open("https://www.meetup.com/Trail-Mix-Hiking/events"))
+
+    meetup = self.new
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
+    meetup.url = "https://www.meetup.com/find/outdoors-adventure"
+    meetup.group_status = doc.search("span.infoToggle-label").text
+
+    meetup
+  end
+
+  def self.scrape_twenties_and_thirties_hikers_meetup
+    doc = Nokogiri::HTML(open("https://www.meetup.com/20s-and-30s-Hikers-Meetup-Phoenix-Az/events"))
+
+    meetup = self.new
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
+    meetup.url = "https://www.meetup.com/find/outdoors-adventure"
+    meetup.group_status = doc.search("span.infoToggle-label").text
+
+    meetup
+  end
+
+  def self.scrape_performance_great_ride
+    doc = Nokogiri::HTML(open("https://www.meetup.com/Performance-Saturday-Social-Group-Ride/events"))
+
+    meetup = self.new
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
+    meetup.url = "https://www.meetup.com/find/outdoors-adventure"
+    meetup.group_status = doc.search("span.infoToggle-label").text
+
+    meetup
+  end
+
+  def self.scrape_phoenix_beginner_hiking
+    doc = Nokogiri::HTML(open("https://www.meetup.com/phoenix-beginner-hikers/events"))
+
+    meetup = self.new
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
+    meetup.url = "https://www.meetup.com/find/outdoors-adventure"
+    meetup.group_status = doc.search("span.infoToggle-label").text
+
+    meetup
+  end
+
+  def self.scrape_take_a_hike
+    doc = Nokogiri::HTML(open("https://www.meetup.com/Take-a-Hike/events"))
+
+    meetup = self.new
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
+    meetup.url = "https://www.meetup.com/find/outdoors-adventure"
+    meetup.group_status = doc.search("span.infoToggle-label").text
+
+    meetup
+  end
+
+  def self.scrape_a_little_off_the_beaten_path
+    doc = Nokogiri::HTML(open("https://www.meetup.com/A-Little-Off-the-Beaten-Path/events"))
+
+    meetup = self.new
+    meetup.group_name = doc.search("a.groupHomeHeader-groupNameLink").text
+    meetup.group_location = doc.search("a.groupHomeHeaderInfo-cityLink").text
+    meetup.member_count = doc.search("a.groupHomeHeaderInfo-memberLink").text
+    meetup.url = "https://www.meetup.com/find/outdoors-adventure"
+    meetup.group_status = doc.search("span.infoToggle-label").text
+
+    meetup
+  end
+end

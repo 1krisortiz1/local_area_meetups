@@ -3,6 +3,7 @@ class LocalAreaMeetups::CLI
   def call
     list_categories
     menu
+    list_meetups
   end
 
   def list_categories
@@ -23,6 +24,9 @@ class LocalAreaMeetups::CLI
         the_category = @category[input.to_i-1]
         puts "Click the link for meetups in your area!"
         puts "#{the_category.name} - #{the_category.url}"
+        the_meetup = @meetup[input.to_i-1]
+        puts "Select a meetup group for more information"
+        puts "#{meetup.group_name} - #{meetup.group_location} - #{meetup.member_count} - #{meetup.group_status}"
       elsif input == "list"
         list_categories
       elsif input == "exit"
@@ -30,6 +34,14 @@ class LocalAreaMeetups::CLI
       else
         puts "Please enter a valid response!"
       end
+    end
+  end
+
+  def list_meetups
+    puts "Here is a list of meetups:"
+    @meetup = LocalAreaMeetups::Meetup.category_meetups
+    @meetup.each.with_index(1) do |meetup, i|
+      puts "#{i}. #{meetup.group_name} - #{meetup.group_location} - #{meetup.member_count} - #{meetup.group_status}"
     end
   end
 
