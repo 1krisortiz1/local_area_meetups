@@ -1,0 +1,26 @@
+
+[1mFrom:[0m /home/1krisortiz1/temporary/local_area_meetups/lib/local_area_meetups/meetup.rb @ line 11 LocalAreaMeetups::Meetup.scrape_outdoor_meetups:
+
+     [1;34m8[0m:   [32mdef[0m [1;36mself[0m.[1;34mscrape_outdoor_meetups[0m
+     [1;34m9[0m:     outdoor_meetups = []
+    [1;34m10[0m:     doc = [1;34;4mNokogiri[0m::HTML(open([31m[1;31m"[0m[31mhttps://www.meetup.com/find/outdoors-adventure/[1;31m"[0m[31m[0m))
+ => [1;34m11[0m: binding.pry
+    [1;34m12[0m:     outdoor_meetups = [1;36mself[0m.new
+    [1;34m13[0m:     outdoor_meetup.group_name = doc.search([31m[1;31m"[0m[31ma.groupHomeHeader-groupNameLink[1;31m"[0m[31m[0m).text
+    [1;34m14[0m:     meetup.group_location = doc.search([31m[1;31m"[0m[31ma.groupHomeHeaderInfo-cityLink[1;31m"[0m[31m[0m).text
+    [1;34m15[0m:     meetup.member_count = doc.search([31m[1;31m"[0m[31ma.groupHomeHeaderInfo-memberLink[1;31m"[0m[31m[0m).text
+    [1;34m16[0m:     meetup.url = [31m[1;31m"[0m[31mhttps://www.meetup.com/find/outdoors-adventure[1;31m"[0m[31m[0m
+    [1;34m17[0m:     meetup.group_status = doc.search([31m[1;31m"[0m[31mspan.infoToggle-label[1;31m"[0m[31m[0m).text
+    [1;34m18[0m: 
+    [1;34m19[0m:     meetup << [1;36mself[0m.scrape_hiking_hikers_hiking_group
+    [1;34m20[0m:     meetup << [1;36mself[0m.scrape_global_bikes_meetup
+    [1;34m21[0m:     meetup << [1;36mself[0m.scrape_trail_mix_hiking
+    [1;34m22[0m:     meetup << [1;36mself[0m.scrape_twenties_and_thirties_hikers_meetup
+    [1;34m23[0m:     meetup << [1;36mself[0m.scrape_performance_great_ride
+    [1;34m24[0m:     meetup << [1;36mself[0m.scrape_phoenix_beginner_hiking
+    [1;34m25[0m:     meetup << [1;36mself[0m.scrape_take_a_hike
+    [1;34m26[0m:     meetup << [1;36mself[0m.scrape_a_little_off_the_beaten_path
+    [1;34m27[0m: 
+    [1;34m28[0m:     meetup
+    [1;34m29[0m:   [32mend[0m
+
