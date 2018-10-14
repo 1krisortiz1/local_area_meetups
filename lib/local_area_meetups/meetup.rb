@@ -3,9 +3,11 @@ class LocalAreaMeetups::Meetup
 
   def self.meetups
     meetup = []
-    binding.pry
+
     meetup << self.scrape_outdoor_meetups
     meetup << self.scrape_tech_meetups
+
+    meetup
   end
 
   def self.scrape_outdoor_meetups
@@ -17,9 +19,10 @@ class LocalAreaMeetups::Meetup
       outdoor_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       outdoor_meetup.url = "https://www.meetup.com/find/outdoors-adventure"
       outdoor_meetup
+      binding.pry
 
       #i += 1
-    end
+    #end
   end
 
   def self.scrape_tech_meetups
@@ -288,14 +291,14 @@ class LocalAreaMeetups::Meetup
 
   def self.scrape_career_and_business
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/career-business"))
-    i = 0
-    while i < 6
+    #i = 0
+    #while i < 6
       career_meetup = self.new
       career_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       career_meetup.url = "https://www.meetup.com/find/career-business/"
-      @meetup_meetups << career_meetup
-      i += 1
-    end
+      #@meetup_meetups << career_meetup
+      #i += 1
+      career_meetup
+    #end
   end
-
 end
