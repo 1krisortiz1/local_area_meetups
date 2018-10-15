@@ -2,45 +2,76 @@ class LocalAreaMeetups::Meetup
   attr_accessor :group_name, :url
 
   def self.meetups
+    self.scrape_meetups
     self.scrape_outdoor_meetups
-    self.scrape_tech_meetups
-    self.scrape_family_meetups
-    self.scrape_health_and_wellness
-    self.scrape_learning_meetups
-    self.scrape_sports_and_fitness
-    self.scrape_photograpy
-    self.scrape_food
-    self.scrape_writing
-    self.scrape_language_and_culture
-    self.scrape_music
-    self.scrape_movements
-    self.scrape_lgbtq
-    self.scrape_film
-    self.scrape_games
-    self.scrape_beliefs
-    self.scrape_arts
-    self.scrape_book_clubs
-    self.scrape_dance
-    self.scrape_pets
-    self.scrape_hobbies_and_crafts
-    self.scrape_fashion_and_beauty
-    self.scrape_social
-    self.scrape_career_and_business
+
+    #self.scrape_tech_meetups
+    #self.scrape_family_meetups
+    #self.scrape_health_and_wellness
+    #self.scrape_learning_meetups
+    #self.scrape_sports_and_fitness
+    #self.scrape_photograpy
+    #self.scrape_food
+    #self.scrape_writing
+    #self.scrape_language_and_culture
+    ##self.scrape_music
+    ##self.scrape_movements
+    ##self.scrape_lgbtq
+    ##self.scrape_film
+    #self.scrape_games
+    #self.scrape_beliefs
+    #self.scrape_arts
+    #self.scrape_book_clubs
+    #self.scrape_dance
+    #self.scrape_pets
+    #self.scrape_hobbies_and_crafts
+    #self.scrape_fashion_and_beauty
+    #self.scrape_social
+    #self.scrape_career_and_business
+  end
+
+  def self.scrape_meetups
+    meetup = []
+
+    meetup << self.scrape_outdoor_meetups
+    meetup << self.scrape_tech_meetups
+    meetup << self.scrape_family_meetups
+    meetup << self.scrape_health_and_wellness
+    meetup << self.scrape_learning_meetups
+    meetup << self.scrape_sports_and_fitness
+    meetup << self.scrape_photograpy
+    meetup << self.scrape_food
+    meetup << self.scrape_writing
+    meetup << self.scrape_language_and_culture
+    meetup << self.scrape_music
+    meetup << self.scrape_movements
+    meetup << self.scrape_lgbtq
+    meetup << self.scrape_film
+    meetup << self.scrape_games
+    meetup << self.scrape_beliefs
+    meetup << self.scrape_arts
+    meetup << self.scrape_book_clubs
+    meetup << self.scrape_dance
+    meetup << self.scrape_pets
+    meetup << self.scrape_hobbies_and_crafts
+    meetup << self.scrape_fashion_and_beauty
+    meetup << self.scrape_social
+    meetup << self.scrape_career_and_business
+
+    meetup
   end
 
   def self.scrape_outdoor_meetups
-    doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure/"))
-    #binding.pry
-    #i = 0
-    #while i < 6
+    doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure"))
+    binding.pry
+    i = 0
+    while i < 6
       outdoor_meetup = self.new
-      outdoor_meetup.group_name = doc.search("ul.j-groupCard-list a").text
+      outdoor_meetup.group_name = "Name of each outdoor meetup should show here."#doc.search("ul.j-groupCard-list a").text
       outdoor_meetup.url = "https://www.meetup.com/find/outdoors-adventure"
       outdoor_meetup
-      binding.pry
-
-      #i += 1
-    #end
+      i += 1
+    end
   end
 
   def self.scrape_tech_meetups
@@ -50,7 +81,7 @@ class LocalAreaMeetups::Meetup
       tech_meetup = self.new
       tech_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       tech_meetup.url = "https://www.meetup.com/find/tech"
-      @meetup_meetups << tech_meetup
+      tech_meetup
       i += 1
     end
   end
@@ -62,7 +93,7 @@ class LocalAreaMeetups::Meetup
       family_meetup = self.new
       family_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       family_meetup.url = "https://www.meetup.com/find/parents-family"
-      @meetup_meetups << family_meetup
+      family_meetup
       i += 1
     end
   end
@@ -74,7 +105,7 @@ class LocalAreaMeetups::Meetup
       health_meetup = self.new
       health_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       health_meetup.url = "https://www.meetup.com/find/health-wellness"
-      @meetup_meetups << health_meetup
+      health_meetup
       i += 1
     end
   end
@@ -86,7 +117,7 @@ class LocalAreaMeetups::Meetup
       learning_meetup = self.new
       learning_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       learning_meetup.url = "https://www.meetup.com/find/education"
-      @meetup_meetups << learning_meetup
+      @meetup
       i += 1
     end
   end
@@ -98,7 +129,7 @@ class LocalAreaMeetups::Meetup
       sports_meetup = self.new
       sports_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       sports_meetup.url = "https://www.meetup.com/find/sports-fitness"
-      @meetup_meetups << sports_meetup
+      sports_meetup
       i += 1
     end
   end
@@ -110,7 +141,7 @@ class LocalAreaMeetups::Meetup
       photography_meetup = self.new
       photography_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       photography_meetup.url = "https://www.meetup.com/find/photography"
-      @meetup_meetups << photography_meetup
+      photography_meetup
       i += 1
     end
   end
@@ -122,7 +153,7 @@ class LocalAreaMeetups::Meetup
       food_meetup = self.new
       food_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       food_meetup.url = "https://www.meetup.com/find/food"
-      @meetup_meetups << food_meetup
+      food_meetup
       i += 1
     end
   end
@@ -134,7 +165,7 @@ class LocalAreaMeetups::Meetup
       writing_meetup = self.new
       writing_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       writing_meetup.url = "https://www.meetup.com/find/writing"
-      @meetup_meetups << writing_meetup
+      writing_meetup
       i += 1
     end
   end
@@ -146,7 +177,7 @@ class LocalAreaMeetups::Meetup
       language_meetup = self.new
       language_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       language_meetup.url = "https://www.meetup.com/find/language"
-      @meetup_meetups << language_meetup
+      language_meetup
       i += 1
     end
   end
@@ -158,7 +189,7 @@ class LocalAreaMeetups::Meetup
       music_meetup = self.new
       music_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       music_meetup.url = "https://www.meetup.com/find/music"
-      @meetup_meetups << music_meetup
+      music_meetup
       i += 1
     end
   end
@@ -170,7 +201,7 @@ class LocalAreaMeetups::Meetup
       movements_meetup = self.new
       movements_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       movements_meetup.url = "https://www.meetup.com/find/movements"
-      @meetup_meetups << movements_meetup
+      movements_meetup
       i += 1
     end
   end
@@ -182,7 +213,7 @@ class LocalAreaMeetups::Meetup
       lgbtq_meetup = self.new
       lgbtq_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       lgbtq_meetup.url = "https://www.meetup.com/find/lgbtq"
-      @meetup_meetups << lgbtq_meetup
+      lgbtq_meetup
       i += 1
     end
   end
@@ -194,7 +225,7 @@ class LocalAreaMeetups::Meetup
       film_meetup = self.new
       film_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       film_meetup.url = "https://www.meetup.com/find/film"
-      @meetup_meetups << film_meetup
+      film_meetup
       i += 1
     end
   end
@@ -206,7 +237,7 @@ class LocalAreaMeetups::Meetup
       games_meetup = self.new
       games_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       games_meetup.url = "https://www.meetup.com/find/games-sci-fi"
-      @meetup_meetups << games_meetup
+      games_meetup
       i += 1
     end
   end
@@ -218,7 +249,7 @@ class LocalAreaMeetups::Meetup
       beliefs_meetup = self.new
       beliefs_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       beliefs_meetup.url = "https://www.meetup.com/find/beliefs/"
-      @meetup_meetups << beliefs_meetup
+      beliefs_meetup
       i += 1
     end
   end
@@ -230,7 +261,7 @@ class LocalAreaMeetups::Meetup
       arts_meetup = self.new
       arts_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       arts_meetup.url = "https://www.meetup.com/find/arts-culture"
-      @meetup_meetups << arts_meetup
+      arts_meetup
       i += 1
     end
   end
@@ -242,7 +273,7 @@ class LocalAreaMeetups::Meetup
       book_clubs_meetup = self.new
       book_clubs_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       book_clubs_meetup.url = "https://www.meetup.com/find/book-clubs"
-      @meetup_meetups << book_clubs_meetup
+      book_clubs_meetup
       i += 1
     end
   end
@@ -254,7 +285,7 @@ class LocalAreaMeetups::Meetup
       dance_meetup = self.new
       dance_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       dance_meetup.url = "https://www.meetup.com/find/dancing"
-      @meetup_meetups << dance_meetup
+      dance_meetup
       i += 1
     end
   end
@@ -266,7 +297,7 @@ class LocalAreaMeetups::Meetup
       pets_meetup = self.new
       pets_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       pets_meetup.url = "https://www.meetup.com/find/pets"
-      @meetup_meetups << pets_meetup
+      pets_meetup
       i += 1
     end
   end
@@ -278,7 +309,7 @@ class LocalAreaMeetups::Meetup
       hobbies_meetup = self.new
       hobbies_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       hobbies_meetup.url = "https://www.meetup.com/find/hobbies-crafts"
-      @meetup_meetups << hobbies_meetup
+      hobbies_meetup
       i += 1
     end
   end
@@ -290,7 +321,7 @@ class LocalAreaMeetups::Meetup
       fashion_meetup = self.new
       fashion_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       fashion_meetup.url = "https://www.meetup.com/find/fashion-beauty"
-      @meetup_meetups << fashion_meetup
+      fashion_meetup
       i += 1
     end
   end
@@ -302,7 +333,7 @@ class LocalAreaMeetups::Meetup
       social_meetup = self.new
       social_meetup.group_name = doc.search("ul.j-groupCard-list a").text
       social_meetup.url = "https://www.meetup.com/find/social"
-      @meetup_meetups << social_meetup
+      social_meetup
       i += 1
     end
   end
