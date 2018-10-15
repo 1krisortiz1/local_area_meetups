@@ -2,12 +2,30 @@ class LocalAreaMeetups::Meetup
   attr_accessor :group_name, :url
 
   def self.meetups
-    meetup = []
-
-    meetup << self.scrape_outdoor_meetups
-    meetup << self.scrape_tech_meetups
-
-    meetup
+    self.scrape_outdoor_meetups
+    self.scrape_tech_meetups
+    self.scrape_family_meetups
+    self.scrape_health_and_wellness
+    self.scrape_learning_meetups
+    self.scrape_sports_and_fitness
+    self.scrape_photograpy
+    self.scrape_food
+    self.scrape_writing
+    self.scrape_language_and_culture
+    self.scrape_music
+    self.scrape_movements
+    self.scrape_lgbtq
+    self.scrape_film
+    self.scrape_games
+    self.scrape_beliefs
+    self.scrape_arts
+    self.scrape_book_clubs
+    self.scrape_dance
+    self.scrape_pets
+    self.scrape_hobbies_and_crafts
+    self.scrape_fashion_and_beauty
+    self.scrape_social
+    self.scrape_career_and_business
   end
 
   def self.scrape_outdoor_meetups
