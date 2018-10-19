@@ -1,5 +1,5 @@
 class LocalAreaMeetups::Meetup
-  attr_accessor :group_name, :url
+  attr_accessor :group_name, :url,
 
   def self.meetups
     self.scrape_meetups
@@ -63,6 +63,7 @@ class LocalAreaMeetups::Meetup
 
   def self.scrape_outdoor_meetups
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure"))
+    text = doc.search("div.unit h3").text.gsub("\n", ' ').gsub("\t", ' ').split.join(' ')
     binding.pry
     i = 0
     while i < 6
