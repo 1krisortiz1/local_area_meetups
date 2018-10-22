@@ -19,7 +19,7 @@ class LocalAreaMeetups::CLI
     while input != "exit"
       puts "Choose list to view the categories again or type exit to exit:"
       input = gets.strip.downcase
-
+      puts " "
       if input == "1"
           list_meetups_outdoor#Outdoors & Adventure Meetups
       elsif input == "2"
@@ -79,199 +79,302 @@ class LocalAreaMeetups::CLI
   end
 
   def list_meetups_outdoor
-    puts "Here is a list of meetups:"
+    puts "Here is a list of Outdoor meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_outdoor_meetups
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "Outdoor Meetups: "
+    puts "#{@meetup.group_name}"
+    puts " "
+    puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
   end
   def list_meetups_tech
-    puts "Here is a list of meetups:"
+    puts "Here is a list of Tech meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_tech_meetups
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "Tech Meetups: "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_family
-    puts "Here is a list of meetups:"
+    puts "Here is a list of Family meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_family_meetups
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "Family Meetups: "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_health
-    puts "Here is a list of meetups:"
+    puts "Here is a list of Health and Wellness meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_health_and_wellness
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_learning
-    puts "Here is a list of meetups:"
+    puts "Here is a list of Learning meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_learning_meetups
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_sports
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_sports_and_fitness
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_photography
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_photograpy
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_food
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_food
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_writing
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_writing
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_language_culture
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_language_and_culture
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_music
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_music
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_movements
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_movements
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_lgbtq
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_lgbtq
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_film
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_film
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_games
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_games
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_beliefs
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_beliefs
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_arts
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_arts
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_book_clubs
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_book_clubs
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
     puts "#{@meetup.group_name}"
+    puts " "
     puts "Enjoy!!"
+    puts " "
   end
   def list_meetups_dance
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_dance
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_pets
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_pets
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_hobbies
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_hobbies_and_crafts
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_fashion
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_fashion_and_beauty
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_social
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_social
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
   end
   def list_meetups_career
     puts "Here is a list of meetups:"
     puts "Loading..................."
+    puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_career_and_business
+    puts " "
     puts "Click the link for more information on the meetups listed below: #{@meetup.url}"
-    puts "#{@meetup.group_name}"
     puts "Enjoy!!"
+    puts "Career Meetups: "
+    puts " "
+    puts "#{@meetup.group_name}"
+    puts " "
+
   end
 
   def goodbye
     puts "Come back again for more meetups!!!"
+    puts " "
   end
 end
