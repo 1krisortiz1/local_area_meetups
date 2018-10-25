@@ -1,9 +1,10 @@
-Test Commit
 # LocalAreaMeetups
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/local_area_meetups`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
+
+This CLI project give users a list of meetups in their selected category.  The user is first presented with a list of categories from which then can chose a meetup category of their interest.  When presented with the meetups the user then has the option to review the meetups and then select the list to be taken to the meetup category page or they can type “list” to return to the category list or “exit” to leave the application.  
 
 ## Installation
 
@@ -23,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run 'local-area-meetups' and follow the interactive propts to choose a category for a list of meetups.
 
 ## Development
 
