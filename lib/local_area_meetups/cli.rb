@@ -1,6 +1,7 @@
 class LocalAreaMeetups::CLI
 
   def call
+    #scrape first level
     list_categories
     menu
   end
@@ -8,8 +9,7 @@ class LocalAreaMeetups::CLI
   def list_categories
     puts "Choose from the category list (1 - 24)"
     puts "Loading.................................."
-    @category = LocalAreaMeetups::Category.categories
-    @category.each.with_index(1) do |category, i|
+    LocalAreaMeetups::Category.all.each.with_index(1) do |category, i|
       puts "#{i}. #{category.name}"
     end
   end
@@ -21,6 +21,7 @@ class LocalAreaMeetups::CLI
       input = gets.strip.downcase
       puts " "
       if input == "1"
+        #check if I have scraped Category 1's meetups
           list_meetups_outdoor#Outdoors & Adventure Meetups
       elsif input == "2"
         list_meetups_tech #Tech Meetups

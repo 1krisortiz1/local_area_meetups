@@ -1,17 +1,13 @@
 class LocalAreaMeetups::Meetup
-  attr_accessor :group_name, :url
+  attr_accessor :group_name, :url, :category
 
-
-  def self.scrape_outdoor_meetups
-    doc = Nokogiri::HTML(open("https://www.meetup.com/find/outdoors-adventure"))
-    text = doc.search("h3").text.strip.gsub("\t", '').gsub("\n\n\n\n", ',')
-      outdoor_meetup = self.new
-      outdoor_meetup.group_name = "#{text}"#doc.search("ul.j-groupCard-list a").text
-      outdoor_meetup.url = "https://www.meetup.com/find/outdoors-adventure"
-      outdoor_meetup
+  def find_by_category(category)
+    @@all.find { |meetup| meetup.category = category }
   end
 
+
   def self.scrape_tech_meetups
+    puts "Scraping"
     doc = Nokogiri::HTML(open("https://www.meetup.com/find/tech"))
     text = doc.search("h3").text.strip.gsub("\t", '').gsub("\n\n\n\n", ',')
       tech_meetup = self.new
