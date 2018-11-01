@@ -9,7 +9,7 @@ class LocalAreaMeetups::Category
   end
 
   def self.all
-    @@all <<
+    @@all << self
   end
 
   def add_meetups(category)
