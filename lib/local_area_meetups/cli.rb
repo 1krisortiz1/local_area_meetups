@@ -16,9 +16,9 @@ class LocalAreaMeetups::CLI
   def list_categories
     puts "Choose from the category list (1 - 24)"
     puts "Loading.................................."
-    LocalAreaMeetups::Scraper.scrape_categories.all.each.with_index(1) do |category, i|
-      puts "#{i}. #{category.name}"
-    end
+    puts LocalAreaMeetups::Scraper.scrape_categories #.all.each.with_index(1) do |category, i|
+    #  puts "#{i}. #{category.name}"
+    #end
   end
 
   def menu
