@@ -3,19 +3,22 @@ class LocalAreaMeetups::CLI
   def call
     welcome
     #scrape first level
+
     list_categories
     menu
   end
 
   def welcome
+    puts "-----------------------------------------"
     puts ""
-    puts "Welcome to my Ruby CLI Meetup Gem"
+    puts "Welcome to my First Ruby CLI Meetup Gem"
     puts ""
+    puts "-----------------------------------------"
   end
 
   def list_categories
     puts "Choose from the category list (1 - 24)"
-    puts "Loading.................................."
+    puts ""
     puts LocalAreaMeetups::Scraper.scrape_categories #.all.each.with_index(1) do |category, i|
     #  puts "#{i}. #{category.name}"
     #end
@@ -368,7 +371,7 @@ class LocalAreaMeetups::CLI
   end
   def list_meetups_career
     puts "Here is a list of meetups:"
-    puts "Loading..................."
+    puts ""
     puts " "
     @meetup = LocalAreaMeetups::Meetup.scrape_career_and_business
     puts " "
