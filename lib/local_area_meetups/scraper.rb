@@ -1,21 +1,36 @@
 class LocalAreaMeetups::Scraper
 
-    def self.scrape_categories
+  def self.scrape_categories
+    puts "scraping"
     doc = Nokogiri::HTML(open("https://www.meetup.com"))
-    parsed_categories = doc.search("h4").children.text
-    cleaned_categories = doc.search("h4").children.text.strip.gsub('eT', 'e, T').gsub('hF', 'h, F').gsub('yH', 'y, H').gsub('sS', 's, S').gsub('sL', 's, L').gsub('gP', 'g, P').gsub('yF', 'y, F').gsub('kW', 'k, W').gsub('gL', 'g, L').gsub('eM', 'e, M').gsub('cM', 'c, M').gsub('QF', 'Q, F').gsub('mS', 'm, S').gsub('sB', 's, B').gsub('sA', 's, A').gsub('sD', 's, D').gsub('eP', 'e, P').gsub('sH', 's, H').gsub('sF', 's, F').gsub('yS', 'y, S').gsub('lC', 'l, C').gsub('Your AccountDiscoverMeetupFollow us', '')
-    numbered_and_ordered_categories = cleaned_categories.gsub(',',"\n").gsub('O', ' 1. O').gsub('Tech', '2. Tech').gsub('Fam', '3. Fam').gsub('Heal', '4. Heal').gsub('Spo', '5. Spo').gsub('Lea', '6. Lea').gsub('Pho', '7. Pho').gsub('Foo', '8. Foo').gsub('Wri', '9. Wri').gsub('Lan', '10. Lan').gsub('Mus', '11. Mus').gsub('Mov', '12. Mov').gsub('LGB', '13. LGB').gsub('Fil', '14. Fil').gsub('Sci', '15. Sci').gsub('Bel', '16. Bel').gsub('Art', '17. Art').gsub('Boo', '18. Boo').gsub('Dan', '19. Dan').gsub('Pet', '20. Pet').gsub('Hobb', '21. Hobb').gsub('Fash', '22. Fash').gsub('Soc', '23. Soc').gsub('Car', '24. Car')
-    puts numbered_and_ordered_categories
+    names = doc.search(".gridList-item").map(&:text)
+    names.delete("Sign up")
+    names.delete("Log in")
+    names.delete("Help")
+    names.delete("Groups")
+    names.delete("Calendar")
+    names.delete("Topics")
+    names.delete("Cities")
+    names.delete("About")
+    names.delete("Meetup Pro")
+    names.delete("Careers")
+    names.delete("Apps")
+    names.delete("API")
+    names.each.with_index(1) do |category, i|
+      puts "#{i}. #{category}"
+    end
   end
 
   def self.scrape_meetups(category)
-    doc = Nokogiri::HTML(open("https://www.meetup.com/find/#{category}"))
-    text = doc.search("h3").text.strip.gsub("\t", '').gsub("\n\n\n\n", ',')
+    meetups = []
+		doc = Nokogiri::HTML(open("https://www.meetup.com/find/#{category}"))
+		doc.css(".groupCard tileGrid-tile noRatings").each do |meetup|
     meetup = LocalAreaMeetups::Meetup.new
-    meetup.group_name = "#{text}"
-    meetup.url = "https://www.meetup.com/find/#{category}"
-    meetup.category = category
-    scrape_meetups
-    binding.pry
-  end
+		meetup.group_name = meetup.css("h3 .padding-none inline-block loading").text.strip.
+		meetup.members = doc.search('p').map(&:text)
+		meetup.url = "https://www.meetup.com/find/#{category}"
+    meetups << meetup
+		end
+    meetups
+	end
 end

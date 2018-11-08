@@ -3,7 +3,6 @@ class LocalAreaMeetups::CLI
   def call
     welcome
     #scrape first level
-
     list_categories
     menu
   end
@@ -19,8 +18,8 @@ class LocalAreaMeetups::CLI
   def list_categories
     puts "Choose from the category list (1 - 24)"
     puts ""
-    puts LocalAreaMeetups::Scraper.scrape_categories #.all.each.with_index(1) do |category, i|
-    #  puts "#{i}. #{category.name}"
+    puts LocalAreaMeetups::Scraper.scrape_categories #.each.with_index(1) do |category, i|
+    #puts "#{i}. #{category}"
     #end
   end
 
@@ -32,19 +31,19 @@ class LocalAreaMeetups::CLI
       puts " "
       if input == "1"
         #check if I have scraped Category 1's meetups
-          LocalAreaMeetups::Scraper.scrape_meetups("outdoors-adventure")#Outdoors & Adventure Meetups
+        LocalAreaMeetups::Scraper.scrape_meetups("outdoors-adventure")
       elsif input == "2"
-        list_meetups_tech #Tech Meetups
+        LocalAreaMeetups::Scraper.scrape_meetups("tech")
       elsif input == "3"
-        list_meetups_family #Family Meetups
+        LocalAreaMeetups::Scraper.scrape_meetups("parents-family")
       elsif input == "4"
-        list_meetups_health #Health & Wellness Meetups
+        LocalAreaMeetups::Scraper.scrape_meetups("health-wellness")
       elsif input == "5"
-        list_meetups_learning #Learning Meetups
+        LocalAreaMeetups::Scraper.scrape_meetups("education")
       elsif input == "6"
-        list_meetups_sports #Sports & Fitness Meetups
+        LocalAreaMeetups::Scraper.scrape_meetups("sports-fitness")
       elsif input == "7"
-        list_meetups_photography #Photography Meetups
+        LocalAreaMeetups::Scraper.scrape_meetups("photography")
       elsif input == "8"
         list_meetups_food #Food & Drink Meetups
       elsif input == "9"

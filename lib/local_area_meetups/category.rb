@@ -3,9 +3,10 @@ class LocalAreaMeetups::Category
   #Category.all = all the cateogory
   @@all = []
 
-  def initialize
+  def initialize(name, url)
     @meetups = []
-    @@all << self
+    @name = name
+    @url = url
   end
 
   def self.all
