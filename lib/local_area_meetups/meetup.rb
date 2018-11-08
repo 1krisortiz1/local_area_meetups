@@ -19,8 +19,8 @@ class LocalAreaMeetups::Meetup
     @@all << self
   end
 
-  def find_by_category(category)
-    @@all[category]
+  def self.find_by_category(category)
+    @@all.detect {|meetup| meetup.category == category}
   end
 
 end
