@@ -1,9 +1,9 @@
 class LocalAreaMeetups::Category
-  attr_accessor :name, :url, :meetups
+  attr_accessor :name, :meetups
   #Category.all = all the cateogory
   @@all = []
 
-  def initialize(name, url)
+  def initialize(name)
     @meetups = []
     @name = name
     @url = url
@@ -14,7 +14,7 @@ class LocalAreaMeetups::Category
   end
 
   def add_meetups(category)
-    @meetups << LocalAreaMeetups::Scraper.scrape_meetups("outdoors-adventure")
+    @meetups << LocalAreaMeetups::Scraper.scrape_meetups(self)
     @meetups << LocalAreaMeetups::Scraper.scrape_meetups("tech")
     @meetups << LocalAreaMeetups::Scraper.scrape_meetups("parents-family")
     @meetups << LocalAreaMeetups::Scraper.scrape_meetups("health-wellness")

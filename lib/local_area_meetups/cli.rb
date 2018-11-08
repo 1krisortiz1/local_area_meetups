@@ -18,9 +18,9 @@ class LocalAreaMeetups::CLI
   def list_categories
     puts "Choose from the category list (1 - 24)"
     puts ""
-    puts LocalAreaMeetups::Scraper.scrape_categories #.each.with_index(1) do |category, i|
-    #puts "#{i}. #{category}"
-    #end
+    LocalAreaMeetups::Scraper.scrape_categories.each.with_index(1) do |category, i|
+      puts "#{i}. #{category}"
+    end
   end
 
   def menu
@@ -29,6 +29,14 @@ class LocalAreaMeetups::CLI
       puts "Choose list to view the categories again or type exit to exit:"
       input = gets.strip.downcase
       puts " "
+      #case input
+      #when "list"
+        #list_categories
+      #when "exit"
+      #  goodbye
+      #  break
+    #  else
+      #  system("open #{@meetups.add_meetups[input.toi-1]}")
       if input == "1"
         #check if I have scraped Category 1's meetups
         LocalAreaMeetups::Scraper.scrape_meetups("outdoors-adventure")
