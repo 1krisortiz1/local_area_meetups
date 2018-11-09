@@ -39,7 +39,9 @@ class LocalAreaMeetups::CLI
       #  system("open #{@meetups.add_meetups[input.toi-1]}")
       if input == "1"
         #check if I have scraped Category 1's meetups
-        LocalAreaMeetups::Scraper.scrape_meetups("outdoors-adventure")
+        LocalAreaMeetups::Scraper.scrape_meetups("outdoors-adventure").each.with_index(1) do |meetup, i|
+          puts "#{i}. #{meetup.group_name} - #{meetup.url} - #{meetup.members}"
+        end
       elsif input == "2"
         LocalAreaMeetups::Scraper.scrape_meetups("tech")
       elsif input == "3"
