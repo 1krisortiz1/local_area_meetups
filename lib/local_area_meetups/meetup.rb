@@ -3,10 +3,10 @@ class LocalAreaMeetups::Meetup
 
   @@all = []
 
-  def initialize(group_name, url, category, members)
+  def initialize(group_name = nil, url = nil, category = nil, members = nil)
     @group_name = group_name
     @url = url
-    @category = LocalAreaMeetups::Category.find_by_category(category)
+    @category = LocalAreaMeetups::Category.find_by_name(category)
     @members = members
 
     save
@@ -20,7 +20,7 @@ class LocalAreaMeetups::Meetup
     @@all << self
   end
 
-  def self.find_by_category(category)
+  def self.find_by_name(category)
     @@all.detect {|meetup| meetup.category == category}
   end
 
