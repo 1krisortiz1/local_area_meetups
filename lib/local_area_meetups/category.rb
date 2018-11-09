@@ -6,15 +6,19 @@ class LocalAreaMeetups::Category
   def initialize(name)
     @meetups = []
     @name = name
-    @url = url
+    #@url = url
   end
 
   def self.all
     @@all << self
   end
 
+  def self.find_by_name(name)
+    @@all.detect {|cat| cat.meetups == meetups}
+  end
+
   def add_meetups(category)
-    @meetups << LocalAreaMeetups::Scraper.scrape_meetups(self)
+    @meetups << LocalAreaMeetups::Scraper.scrape_meetups("outdoors-adventure")
     @meetups << LocalAreaMeetups::Scraper.scrape_meetups("tech")
     @meetups << LocalAreaMeetups::Scraper.scrape_meetups("parents-family")
     @meetups << LocalAreaMeetups::Scraper.scrape_meetups("health-wellness")
