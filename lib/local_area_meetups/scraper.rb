@@ -16,12 +16,17 @@ class LocalAreaMeetups::Scraper
     end
 	end
 
-    def self.scrape_groups(groups)
-      groups.each_with_index(1) do |group_info, i|
-        puts "#{i}. #{group_info.group_name}"
-        puts "          #{group_info.member}"
-        puts "          #{group_info.url}"
-      end
-      binding.pry
-	  end
+    def self.scrape_groups#(groups)
+      puts "List of group info will be here:"
+      puts "1. hikers hike"
+      puts "2. I love to climb"
+    end
+
+      #groups.each_with_index(1) do |group_info, i|
+      #  puts "#{i}. #{group_info.group_name}"
+      #  puts "          #{group_info.member}"
+      #  puts "          #{group_info.url}"
+      #end
+      #binding.pry
+	  #end
 end

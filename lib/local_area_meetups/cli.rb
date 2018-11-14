@@ -29,13 +29,13 @@ class LocalAreaMeetups::CLI
     end
   end
 
-  def self.list_meetups
-    puts "Choose a Meetup"
-    puts ""
-    LocalAreaMeetups::Scraper.scrape_groups.each.with_index(1) do |meetup, i|
-      puts "#{i}. #{meetup}"
-    end
-    binding.pry
+  def list_meetups
+    LocalAreaMeetups::Scraper.scrape_meetups("Tech")
+    meetup_menu
+    #LocalAreaMeetups::Scraper.scrape_groups.each.with_index(1) do |meetup, i|
+    #  puts "#{i}. #{meetup}"
+    #end
+    #binding.pry
   end
 
   def category_menu
@@ -44,7 +44,9 @@ class LocalAreaMeetups::CLI
       puts "Choose list to view the categories again or type exit to exit:"
       input = gets.strip.downcase
       puts " "
-      if input == "list"
+      if input = "1"
+        list_meetups
+      elsif input == "list"
         list_categories
       elsif input == "exit"
         goodbye
@@ -54,7 +56,7 @@ class LocalAreaMeetups::CLI
     end
   end
 
-  def meetup_menue
+  def meetup_menu
     input = nil
     while input != "categories"
       puts "Choose a meetup"
