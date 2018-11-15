@@ -3,18 +3,22 @@ class LocalAreaMeetups::Category
   #Category.all = all the cateogory
   @@all = []
 
-  def initialize(name)
-    @meetups = []
-    @name = name
-    #@url = url
+  def self.all
+    @@all
   end
 
-  def self.all
+  def save #instance method
     @@all << self
   end
 
-  def self.find_by_name(name)
-    @@all.detect {|cat| cat.meetups == meetups}
+  def initialize(name)
+    @meetups = []
+    @name = name
+    save
+  end
+
+  def find_by_name(name)
+    self.all.detect{|o| o.name == name}
   end
 
   def add_meetups(category)

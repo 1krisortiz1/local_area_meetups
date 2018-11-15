@@ -9,17 +9,21 @@ class LocalAreaMeetups::Scraper
   end
   ####################Meetup Scraper#######################
   def self.scrape_meetups(category)
-    category =  "Tech"
+    @category = category
+    @meetups = []
 		doc = Nokogiri::HTML(open("https://www.meetup.com/find/#{category}"))
-    group = doc.search("h3").map(&:text).each.with_index(1) do |meetup, i|
-      puts "#{i}. #{meetup}"
-    end
+    groups = doc.search("div a.display-none").map(&:text)
+    @meetups << groups
+    puts @meetups
 	end
 
     def self.scrape_groups#(groups)
       puts "List of group info will be here:"
-      puts "1. hikers hike"
-      puts "2. I love to climb"
+      puts ""
+      puts "Meetup Name:          Let's hike the springs"
+      puts "Meetup Date:          Nov 24, 2018 @ 6 am"
+      puts "Meetup Location:      Meet in the Safeway parking lost at Scottsdale Road and Chap"
+      puts ""
     end
 
       #groups.each_with_index(1) do |group_info, i|

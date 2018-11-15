@@ -1,8 +1,10 @@
 class LocalAreaMeetups::CLI
+  attr_accessor :category
+
+  def initialize; end
 
   def call
     welcome
-    #scrape first level
     choose_category
     category_menu
   end
@@ -15,13 +17,16 @@ class LocalAreaMeetups::CLI
     puts " ==============================================="
   end
 
-  def choose_category
-    #asks the user to choose a category.
+  def choose_category  #asks the user to choose a category.
     puts "Which Category are you interested in?"
     list_categories
   end
 
-  def list_categories
+  def choose_meetup_group
+    puts "Which Meetup Group are you interested in?"
+  end
+
+  def list_categories #lists all 24 categories
     puts "Choose from the category list (1-24)"
     puts " "
     LocalAreaMeetups::Scraper.scrape_categories.each.with_index(1) do |category, i|
@@ -29,13 +34,10 @@ class LocalAreaMeetups::CLI
     end
   end
 
-  def list_meetups
-    LocalAreaMeetups::Scraper.scrape_meetups("Tech")
-    meetup_menu
-    #LocalAreaMeetups::Scraper.scrape_groups.each.with_index(1) do |meetup, i|
-    #  puts "#{i}. #{meetup}"
-    #end
-    #binding.pry
+  def list_meetups #lists the meetups scraped from each category url
+    LocalAreaMeetups::Scraper.scrape_meetups("Tech").each.with_index(1) do |meetup, i|
+      puts "#{i}. #{meetup}"
+    end
   end
 
   def category_menu
@@ -44,7 +46,7 @@ class LocalAreaMeetups::CLI
       puts "Choose list to view the categories again or type exit to exit:"
       input = gets.strip.downcase
       puts " "
-      if input = "1"
+      if input == "1"
         list_meetups
       elsif input == "list"
         list_categories
@@ -58,18 +60,19 @@ class LocalAreaMeetups::CLI
 
   def meetup_menu
     input = nil
-    while input != "categories"
-      puts "Choose a meetup"
+    while input != "exit"
+      puts "Choose a meetup to view more information or chose exit to return to the category list"
+      puts ""
       input = gets.strip.downcase
       puts ""
       if input == "1"
-        list_meetups
-      elsif input == "categories"
-        list_categories
+        LocalAreaMeetups::Scraper.scrape_groups
       elsif input == "meetups"
         list_meetups
       elsif input == "exit"
-        goodbye
+        list_categories
+      else
+        puts "Please enter a valid response"
       end
     end
   end
