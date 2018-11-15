@@ -32,12 +32,14 @@ class LocalAreaMeetups::CLI
     LocalAreaMeetups::Scraper.scrape_categories.each.with_index(1) do |category, i|
       puts "#{i}. #{category}"
     end
+    puts ""
   end
 
   def list_meetups #lists the meetups scraped from each category url
-    LocalAreaMeetups::Scraper.scrape_meetups("Tech").each.with_index(1) do |meetup, i|
+    LocalAreaMeetups::Scraper.scrape_meetups("pets").each.with_index(1) do |meetup, i|
       puts "#{i}. #{meetup}"
     end
+    puts ""
   end
 
   def category_menu
@@ -48,6 +50,7 @@ class LocalAreaMeetups::CLI
       puts " "
       if input == "1"
         list_meetups
+        meetup_menu
       elsif input == "list"
         list_categories
       elsif input == "exit"

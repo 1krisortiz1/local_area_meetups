@@ -12,17 +12,17 @@ class LocalAreaMeetups::Scraper
     @category = category
     @meetups = []
 		doc = Nokogiri::HTML(open("https://www.meetup.com/find/#{category}"))
-    groups = doc.search("div a.display-none").map(&:text)
-    @meetups << groups
-    puts @meetups
+    groups = doc.search("div a.display-none").map(&:text)[1..20]
+    #@meetups << groups
+    #puts @meetups
 	end
 
     def self.scrape_groups#(groups)
-      puts "List of group info will be here:"
+      puts "Here is the information you requested:"
       puts ""
-      puts "Meetup Name:          Let's hike the springs"
-      puts "Meetup Date:          Nov 24, 2018 @ 6 am"
-      puts "Meetup Location:      Meet in the Safeway parking lost at Scottsdale Road and Chap"
+      puts "#{Meetup.name}"
+      puts "#{Meetup.date_time}"
+      puts "#{Meetup.details}"
       puts ""
     end
 

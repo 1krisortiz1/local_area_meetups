@@ -16,10 +16,10 @@ class LocalAreaMeetups::Meetup
   end
 
   def initialize(group_name, url, category, members)
-    @group_name = group_name
-    @url = url
+    @group_name = Meetup.group_name
+    @url = Meetup.url
     @category = LocalAreaMeetups::Category.find_by_name(category)
-    @members = members
+    @members = Meetup.members
     save
   end
 end
