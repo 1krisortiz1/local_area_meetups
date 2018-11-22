@@ -9,14 +9,17 @@ class LocalAreaMeetups::Scraper
   end
   ####################Meetup Scraper#######################
   def self.scrape_meetup_urls
-    get_page.css("a").attribute("href").text
-    binding.pry
+    main_url = "https://www.meetup.com/find/" + get_page.css(".flex-item").css("a.link.text--bold").first.attributes["class"].value.each do |m|
+      puts "#{m}"
+    binding.pry 
   end
-    #a href="https://www.meetup.com/find/" class="link text--bold"> == $0
+  end
+      #a href="https://www.meetup.com/find/" class="link text--bold"> == $0
   def self.make_meetups
-    scrape_categories.each do |cat|
+    scrape_meetup_urls.each do |cat|
 #      binding.pry
       LocalAreaMeetups::Meetup.new_from_index_page(cat)
+    #  binding.pry 
     end
   end
 end
