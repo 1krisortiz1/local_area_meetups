@@ -1,13 +1,14 @@
 class LocalAreaMeetups::Meetup
-	attr_accessor :name, :members, :url
-	@@all = []
+  attr_accessor :category, :name, :members, :url
 
-	def initialize(cat_hash)
-		cat_hash.each do |k,v|
-			self.send(("#{k}="), v)
-		end
-		self
-	end
+  def initialize(name)
+    @name = name
+  end
+
+  def category=(category)
+    @category = category
+    category.add_meetup(self) if !category.meetups.include?(self)
+  end
 
 	def self.all
 		@@all
