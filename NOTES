@@ -41,6 +41,24 @@ How to build a CLI Gem
 			-if exit
 				-exit - Goodbye, see you next time!
 
+				#scraped_cats.map{|x| x[:url]}  #extracts only urls
+	            #binding.pry
+
+
+					def self.cat_urls
+				        scraped_uls = []
+						doc = Nokogiri::HTML(open("#{@meetup_url}"))
+				            data= doc.css('a')[0].attributes["href"].value.each do |dets|
+				                meetup_hash = {
+				                    :name => dets.css(".groupCard .data-name").text,
+				                    :members => dets.css(".groupCArd .small ellipsize"),
+				                    :url => dets.css('a')
+				                }
+				                scraped_uls << meetup_hash
+				            end
+				            scraped_uls
+				            #binding.pry
+					end
 
 (google how to build a gem?) Make a gem using bundler. Railscasts.com - example.
 Enter bundle gem XXXXX (into terminal)

@@ -1,13 +1,15 @@
 class LocalAreaMeetups::Category
-
     attr_accessor :name, :url, :meetups
 
-    def initialize(name)
+    @@all = []
+
+    def initialize(name, url)
+      @url = url
       @name = name
       @meetups = []
     end
 
-    def self.add_meetup(meetup)
+    def add_meetup(meetup)
       @meetups << meetup
       meetup.category = self if meetup.category != self
     end
