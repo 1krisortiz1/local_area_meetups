@@ -5,17 +5,16 @@ class LocalAreaMeetups::CLI
   		list_categories
   	end
 
-      def welcome
-        puts " ================================================"
-        puts "|                                                |"
-        puts "|    Welcome to my First Ruby CLI Meetup Gem     |"
-        puts "|                                                |"
-        puts " ==============================================="
+     def welcome
+          puts " ================================================"
+          puts "|                                                |"
+          puts "|    Welcome to my First Ruby CLI Meetup Gem     |"
+          puts "|                                                |"
+          puts " ==============================================="
     end
 
   	def list_categories
         puts "Choose from the category list (1-24)"
-        puts " "
         categories_array = LocalAreaMeetups::Scraper.scrape_categories
         categories_array.each.with_index(1) { |category, i|
           puts "#{i}. #{category.name}"
@@ -23,27 +22,51 @@ class LocalAreaMeetups::CLI
         select_category(categories_array)
     end
 
-  def select_category(categories_array)
-    puts "Which Category are you interested in?"
-    puts "Choose 1-24:"
-    input = gets.strip.downcase
-    input = input.to_i
+    def select_category(categories_array)
+        puts "Which Category are you interested in (1-24)?"
+        input = gets.strip.downcase
+        input = input.to_i
 
-    if input > 0 && input < 25
-        cat_name = categories_array[input -1].name.strip
-        puts "Here are meetups in the #{cat_name.upcase} category."
-        list_meetups(cat_name)
-    elsif
-        puts "Please enter a valid response!"
-    else
-      goodbye
+        if input > 0 && input < 25
+            cat_name = categories_array[input -1].name.strip
+            cat_url_array = categories_array[input -1].url
+            cat_url = cat_url_array.to_s
+            puts "Here are meetups in the #{cat_name.upcase} category."
+        elsif
+            puts "Please enter a valid response!"
+        else
+            goodbye
+        end
+        list_meetups(cat_url)
     end
-  end
 
-  def list_meetups(cat_name)
-      meetup_array = LocalAreaMeetups::Meetup.list_meetups(cat_name)
-      meetup_array
-  end
+    def list_meetups(cat_url)
+        puts "Select a meetup for more information"
+        meetup_list = LocalAreaMeetups::Scraper.scraped_meetups(cat_url)
+        meetup_list.each_with_index {|meetup, i|
+            puts "#{i}. #{meetup.name} - #{meetup.members}"
+        }
+        select_group(group_url)
+    end
+
+    def select_group(group_url)
+        puts "Which group are you interested in?"
+        input = gets.strip.downcase
+        input = input.to_i
+
+        if input > 0 && input < 5
+            LocalAreaMeetups::Scraper.meetup_details(group_url)
+        elsif
+            puts "Please enter a valid response!"
+    end
+    end
+    #def list_meetups(cat_name)
+    #    puts "Please select a meetup for more information:"
+    ###    meetups_array.each_with_index(1) {|meetup, i|
+        #    puts "#{i}. #{meetup.name}"
+        #}
+        #select_meetups
+    #end
 
   def goodbye
     puts "Come back again for more meetups!!!"

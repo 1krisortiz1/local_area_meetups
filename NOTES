@@ -62,3 +62,6 @@ How to build a CLI Gem
 
 (google how to build a gem?) Make a gem using bundler. Railscasts.com - example.
 Enter bundle gem XXXXX (into terminal)
+
+
+url = LocalAreaMeetups::Category.url
