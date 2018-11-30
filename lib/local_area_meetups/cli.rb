@@ -4,6 +4,8 @@ class LocalAreaMeetups::CLI
   		list_categories
   	end
 
+
+###############cli methods############
      def welcome
           puts " ================================================"
           puts "|                                                |"
@@ -15,9 +17,7 @@ class LocalAreaMeetups::CLI
   	def list_categories
         puts "Choose from the category list (1-24)"
         categories_array = LocalAreaMeetups::Scraper.scrape_categories
-        categories_array.each.with_index(1) { |category, i|
-          puts "#{i}. #{category.name}"
-        }
+        categories_array.each.with_index(1) { |category, i| puts "#{i}. #{category.name}"}
         select_category(categories_array)
     end
 
@@ -28,7 +28,7 @@ class LocalAreaMeetups::CLI
 
         if input > 0 && input < 25
             cat_name = categories_array[input -1].name.strip
-            cat_url_array = categories_array[input -1].url
+            cat_url_array = categories_array[input -1].href
             cat_url = cat_url_array.to_s
             puts "Here are meetups in the #{cat_name.upcase} category."
         elsif
@@ -43,9 +43,7 @@ class LocalAreaMeetups::CLI
         group_url = LocalAreaMeetups::Scraper.category_urls
         puts "Select a meetup for more information"
         meetup_lists = LocalAreaMeetups::Scraper.scraped_meetups(cat_url)
-        meetup_lists.each.with_index(1) {|meetup, i|
-            puts "#{i}. #{meetup.name} - #{meetup.members}"
-        }
+        meetup_lists.each.with_index(1) {|meetup, i| puts "#{i}. #{meetup.name} - #{meetup.members}"}
         select_group(group_url)
     end
 
@@ -55,8 +53,8 @@ class LocalAreaMeetups::CLI
         input = input.to_i
 
         if input > 0 && input < 10
-            meetup_name = group_url[input -1].name.strip
-            meet_url_array = group_url[input -1].url
+            meetup_name = group_url[input -1]#.name.strip
+            meet_url_array = group_url[input -1]#.url
             group_url = meet_url_array
             puts "Here's info in the #{meetup_name.upcase}."
         elsif
