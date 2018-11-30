@@ -1,5 +1,4 @@
 class LocalAreaMeetups::CLI
-
   	def call
         welcome
   		list_categories
@@ -41,9 +40,10 @@ class LocalAreaMeetups::CLI
     end
 
     def list_meetups(cat_url)
+        group_url = LocalAreaMeetups::Scraper.category_urls
         puts "Select a meetup for more information"
-        meetup_list = LocalAreaMeetups::Scraper.scraped_meetups(cat_url)
-        meetup_list.each_with_index {|meetup, i|
+        meetup_lists = LocalAreaMeetups::Scraper.scraped_meetups(cat_url)
+        meetup_lists.each.with_index(1) {|meetup, i|
             puts "#{i}. #{meetup.name} - #{meetup.members}"
         }
         select_group(group_url)
@@ -54,19 +54,18 @@ class LocalAreaMeetups::CLI
         input = gets.strip.downcase
         input = input.to_i
 
-        if input > 0 && input < 5
-            LocalAreaMeetups::Scraper.meetup_details(group_url)
+        if input > 0 && input < 10
+            meetup_name = group_url[input -1].name.strip
+            meet_url_array = group_url[input -1].url
+            group_url = meet_url_array
+            puts "Here's info in the #{meetup_name.upcase}."
         elsif
             puts "Please enter a valid response!"
+        else
+            goodbye
+        end
+        LocalAreaMeetups::Scraper.meetup_details(group_url)
     end
-    end
-    #def list_meetups(cat_name)
-    #    puts "Please select a meetup for more information:"
-    ###    meetups_array.each_with_index(1) {|meetup, i|
-        #    puts "#{i}. #{meetup.name}"
-        #}
-        #select_meetups
-    #end
 
   def goodbye
     puts "Come back again for more meetups!!!"

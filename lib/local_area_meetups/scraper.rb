@@ -26,16 +26,19 @@ class LocalAreaMeetups::Scraper
 	def self.scraped_meetups(cat_url)
 		meetup_list = []
 		doc = Nokogiri::HTML(open("#{cat_url}"))
-		details = doc.css(".groupCard--content")
+		details = doc.css(".groupCard")
 		details.each_with_index{|info, index|
-			if index < 5 then
+			if index < 10 then
 				new_info = LocalAreaMeetups::Meetup.new(name)
-				new_info.name = details.search("h3").text.strip
-				new_info.members = details.search("p").text.strip
+				new_info.name = info.search("h3").text.strip
+				new_info.members = info.search("p").text.strip
+				new_info.url = info.search("a").attribute("href").value
 				meetup_list[index] = new_info
 			end
+
 		}
 		meetup_list
+		#binding.pry
 	end
 
 	def self.meetup_details(group_url)
@@ -43,7 +46,7 @@ class LocalAreaMeetups::Scraper
 		doc = Nokogiri::HTML(open("meetup_url"))
 		details = doc.css("div.flex-item")
 		details.each_with_index{|info, i|
-			if i < 5 then
+			if i < 10 then
 				new_details = LocalAreaMeetups::Meetup.new(name)
 				puts ""
 				puts "Here is more information about Hikers"
