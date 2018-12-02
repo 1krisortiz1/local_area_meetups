@@ -43,24 +43,33 @@ class LocalAreaMeetups::Scraper
 	end
 
 	#scraped individual meetup groups
-	def self.meetup_details(url)
-		href = ""
-		LocalAreaMeetups::Meetup.all.find {|group| group = group.href if group.url == url}
-
-		group_page = Nokogiri::HTML(open("href"))
-		puts ""
-		puts "Here is more information about Hikers"
-		puts ""
-		puts "MEETUP INFORMATION"
-		new_details.name = details.search("a.eventCardHead--title").first.text
-		new_details.status = details.search(".eventStatusIndicator-status").first.text
-		new_details.date_time = details.search("span.eventTimeDisplay-startDate").first.text
-		new_details.venue_name = details.search(".venueDisplay").css("p").first.text
-		new_details.address = details.search("p").css(".venueDisplay-venue-address").first.text
-		puts ""
-		puts "MEETUP DETAILS"
-		new_details.summary = details.search(".eventCard--MainContent--description").first.text
+	def self.meetup_details#(https://www.meetup.com/find/outdoors-adventure/)  #=> temp
+		group_list = []
+		#href = ""
+		#new_details = LocalAreaMeetups::Meetup.all.find {|group| group = group.href if group.url == url}
+		#puts ""
+		#puts "Here is more information about Hikers"
+		#puts ""
+		#puts "MEETUP INFORMATION"
+		doc = Nokogiri::HTML(open("https://www.meetup.com/threeh/events/"))
+		new_details = doc.css(".list-item")
+		new_details.each_with_index{|info, index|
+			if index < 10 then
+				new_details = LocalAreaMeetups::Meetup.new(name)
+				new_details.meetup_name = doc.search("a.eventCardHead--title").first.text
+				new_details.status = doc.search("li").css(" div.eventCard--MainContent")[0].text
+				new_details.date_time = doc.search("span.eventTimeDisplay-startDate")[0].text
+				new_details.venue_name = doc.search("p.text--bold").first.text
+				new_details.address = doc.search("p.venueDisplay-venue-address").first.text
+				new_details.summary = doc.search(".eventCard--MainContent div.chunk")[1].text
+				group_list[index] = new_details
+			end
+		}
+	#	puts ""
+		#puts "MEETUP DETAILS"
+		group_list
 	end
+
 end
 
 
@@ -77,4 +86,4 @@ end
 		#	end
 		#}
 		#meetup_list_details
-	#end
+#end

@@ -1,11 +1,9 @@
 class LocalAreaMeetups::CLI
-  	def call
+    def call
         welcome
-  		list_categories
-  	end
+        list_categories
+    end
 
-
-###############cli methods############
      def welcome
           puts " ================================================"
           puts "|                                                |"
@@ -14,7 +12,7 @@ class LocalAreaMeetups::CLI
           puts " ==============================================="
     end
 
-  	def list_categories
+    def list_categories
         puts "Choose from the category list (1-24)"
         categories_array = LocalAreaMeetups::Scraper.scrape_categories
         categories_array.each.with_index(1) { |category, i| puts "#{i}. #{category.name}"}
@@ -62,8 +60,14 @@ class LocalAreaMeetups::CLI
         else
             goodbye
         end
-        LocalAreaMeetups::Scraper.meetup_details(group_url)
+        list_group_details#(group_url)
     end
+
+    def list_group_details
+        meetup_details_array = LocalAreaMeetups::Scraper.meetup_details
+        puts meetup_details_array.each.with_index(1){|details, i| puts "#{i}. #{details.name}"}
+    end
+
 
   def goodbye
     puts "Come back again for more meetups!!!"
