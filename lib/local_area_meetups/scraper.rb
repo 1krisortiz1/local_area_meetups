@@ -14,17 +14,7 @@ class LocalAreaMeetups::Scraper
         }
         categories_list
     end
-##scrapes category urls
-	def self.get_category_urls
-		category_urls = []
-		doc = Nokogiri::HTML(open("https://www.meetup.com/"))
-		urls = doc.css("div.exploreHome-categories-card")
-		cats_urls = urls.css("a").attribute("href").value
-		category_urls << cats_urls
-		category_urls
-	end
-##scrapes first level of meetup information - group name and the number of members
-##returns an array with group name and members
+
 	def self.get_groups(cat_url)
 		meetup_list = []
 		doc = Nokogiri::HTML(open("#{cat_url}"))
