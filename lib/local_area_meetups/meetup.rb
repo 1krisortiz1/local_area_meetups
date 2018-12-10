@@ -7,19 +7,10 @@ class LocalAreaMeetups::Meetup
     @name = name
     @members = members
     @url = url
-    @category = []
+    save
   end
 
-  def category=(category)
-    @category = category
-    category.add_meetup(self) if !category.meetups.include?(self)
-  end
-
-  def self.find_by_name(category)
-    self.all.detect{|cat| cat.category == category}
-  end
-
-    def self.all
+  def self.all
         @@all
     end
 

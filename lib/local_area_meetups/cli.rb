@@ -14,10 +14,10 @@ class LocalAreaMeetups::CLI
     end
 
     def list_categories
-        puts "Choose from the category list (1-24)"
-        categories_array = LocalAreaMeetups::Scraper.get_categories
-        categories_array.each.with_index(1) { |category, i| puts "#{i}. #{category.name}"}
-        select_category(categories_array)
+        LocalAreaMeetups::Scraper.get_categories if LocalAreaMeetups::Category.all == []
+        puts "Choose from the category list (1-#{LocalAreaMeetups::Category.all.size})"
+        LocalAreaMeetups::Category.all.each.with_index(1) { |category, i| puts "#{i}. #{category.name}"}
+        select_category
     end
 
     def menu
@@ -35,27 +35,26 @@ class LocalAreaMeetups::CLI
         end
     end
 
-    def select_category(categories_array)
-        puts "Which Category are you interested in (1-24)?"
+    def select_category
+        categories_array = LocalAreaMeetups::Category.all
+        puts "Which Category are you interested in (1-#{categories_array.size})?"
         input = gets
 
             input = input.to_i
-            if input > 0 && input < 25
-                cat_name = categories_array[input -1].name.strip
-                cat_url = categories_array[input -1].href
-
-                puts "\nHere are groups in the #{cat_name.upcase} category."
+            if input > 0 && input <= categories_array.size
+                cato = categories_array[input -1]
+                puts "\nHere are groups in the #{cato.name.upcase} category."
                 puts ""
-                list_groups(cat_url)
+                list_groups(cato)
             else
                 invalid_response
         end
     end
 
-    def list_groups(cat_url)
+    def list_groups(cato)
         puts "=======SELECT THE LINK TO VIEW THEIR PAGE================="
-        group_list = LocalAreaMeetups::Scraper.get_groups(cat_url)
-        group_list.each.with_index(1) {|meetup, i| puts "\n#{i}. #{meetup.name} \n\t  #{meetup.members} \n\t  #{meetup.url}"}
+        LocalAreaMeetups::Scraper.get_groups(cato) if cato.meetups == []
+        cato.meetups.each.with_index(1) {|meetup, i| puts "\n#{i}. #{meetup.name} \n\t  #{meetup.members} \n\t  #{meetup.url}"}
         puts ""
         puts "=============================================================="
     end
@@ -69,5 +68,4 @@ class LocalAreaMeetups::CLI
   def invalid_response
       puts "Please enter a valid response"
   end
-  binding.pry
 end
