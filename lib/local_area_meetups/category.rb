@@ -17,8 +17,8 @@ class LocalAreaMeetups::Category
         @@all << self
     end
 
-    def self.find(id)
-        self.all[id-1]
+    def self.find(index)
+        self.all[index-1]
     end
 
     def add_meetup(meetup)
