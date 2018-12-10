@@ -69,4 +69,5 @@ class LocalAreaMeetups::CLI
   def invalid_response
       puts "Please enter a valid response"
   end
+  binding.pry
 end
